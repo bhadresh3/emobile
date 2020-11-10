@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-
 @RestController
 @RequestMapping(path = "/adminRequest")
 public class AdminSubmitController {
@@ -20,8 +18,8 @@ public class AdminSubmitController {
     }
 
     @PostMapping(value="/status/{requestId}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void ChangeStatus(@PathVariable String requestId, @PathParam(value = "status") String Status){
+    @ResponseStatus(HttpStatus.OK)
+    public void ChangeStatus(@PathVariable String requestId, @RequestParam(name = "status") String Status){
         String newStatus;
         if(Status.equals("1")){
             newStatus = "Approved";
@@ -30,7 +28,7 @@ public class AdminSubmitController {
         }else if(Status.equals(("3"))){
             newStatus = "Change Require";
         }else{
-            return;
+            newStatus = "unidentified";
         }
         adminService.postStatus(requestId, newStatus);
     }

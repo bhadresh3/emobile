@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface AdminRepo extends CrudRepository<User, Long> {
-    //void postStatus(String requestId, String newStatus);
     @Query(value = "SELECT * FROM User u WHERE u.status = 'Approved'",
             nativeQuery = true)
     List<User> findByApproved();

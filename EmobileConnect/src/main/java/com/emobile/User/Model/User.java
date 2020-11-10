@@ -30,11 +30,11 @@ public class User implements Serializable {
     private String city;
     @Column(name = "state")
     private String state;
-    @Column(name = "zip_code")
-    private long zipCode;
+//    @Column(name = "zip_code")
+//    private long zipCode;
     @Column(name = "documentList")
     private String documentList;
-    @Column(name = "status")
+    @Column(name = "status", columnDefinition = "varchar(255) default 'Submitted'")
     private String status;
     @Column(name = "assignedNumber")
     private String assignedNumber;

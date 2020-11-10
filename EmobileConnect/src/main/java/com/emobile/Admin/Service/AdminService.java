@@ -7,10 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface AdminService {
-
-
      void postStatus(String requestId, String newStatus);
 
      List<User> findByApproved();
